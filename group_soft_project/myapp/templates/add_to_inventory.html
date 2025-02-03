@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Add to Inventory</title>
+</head>
+<body>
+    <h2>Add Item to Inventory</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <label for="item">Select Item Type:</label>
+        <select name="item">
+            {% for item in item_types %}
+                <option value="{{ item.unique_barcode }}">{{ item.name }}</option>
+            {% endfor %}
+        </select>
+        <br><br>
+        <label for="date">Select Date:</label>
+        <input type="date" name="date">
+        <br><br>
+        <button type="submit">Add to Inventory</button>
+    </form>
+</body>
+</html>
